@@ -15,7 +15,7 @@ Python
 
 {Make a list of websites that you found helpful in this project}
 
-- [Django Render Deploy]([https://www.tableau.com/es-es/products/public](https://render.com/docs/deploy-django))
+- [Django Render Deploy](https://render.com/docs/deploy-django)
 - [Django Documentation](https://docs.djangoproject.com/en/6.0/)
 
 
