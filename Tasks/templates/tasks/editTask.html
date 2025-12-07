@@ -1,0 +1,58 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="mb-3">
+    <a href="{% url 'taskDetails' task.id %}" class="btn btn-outline-secondary">
+        ← Back
+    </a>
+</div>
+
+<h1 class="text-center mb-4">Edit Task: {{ task.title }}</h1>
+
+<div class="mx-auto" style="max-width: 650px;">
+
+    <!-- Edit Form -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            Edit Task Details
+        </div>
+
+        <div class="card-body">
+            <form method="post" onsubmit="return confirm('Are you sure you want to save changes to this task?');">
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Form -->
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            Danger Zone
+        </div>
+
+        <div class="card-body">
+            <p class="text-danger fw-semibold">
+                This action cannot be undone.
+            </p>
+
+            <form method="post" action="{% url 'deleteTask' task.id %}" 
+                  onsubmit="return confirm('Are you sure you want to delete this task?');">
+                {% csrf_token %}
+                
+                <button type="submit" class="btn btn-danger w-100">
+                    Delete Task
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

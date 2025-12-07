@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 600px;">
+
+    <h1 class="text-center mb-4">Your Profile</h1>
+
+    <div class="card shadow-sm p-4">
+
+        <h4 class="mb-3">Hello, {{ user.username }} 👋</h4>
+
+        <p class="mb-1"><strong>Email:</strong> {{ user.email }}</p>
+        <p class="mb-1"><strong>First name:</strong> {{ user.first_name|default:"(not provided)" }}</p>
+        <p class="mb-3"><strong>Last name:</strong> {{ user.last_name|default:"(not provided)" }}</p>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'tasksView' %}" class="btn btn-outline-primary">
+                View Tasks
+            </a>
+
+            <a href="{% url 'editProfile' %}" class="btn btn-primary">
+                Edit Profile
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

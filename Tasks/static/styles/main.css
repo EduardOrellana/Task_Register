@@ -1,0 +1,15 @@
+main{
+    text-align: center;
+}
+
+form * {
+    margin-bottom: 10px;
+    display: block;
+    text-align: justify;
+}
+
+.me-img {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 10px;
+}

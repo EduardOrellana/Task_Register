@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="text-center mb-4">
+    <h1 class="fw-bold">Welcome</h1>
+    <p class="text-muted">Welcome to the Task Manager application built with Django!</p>
+</div>
+
+<div class="card shadow-sm p-4 mx-auto" style="max-width: 500px;">
+    {% if user.is_authenticated %}
+        <h4 class="mb-3">Hello, {{ user.username }} 👋</h4>
+        <p>You can start managing your tasks below.</p>
+        <a href="{% url 'tasksView' %}" class="btn btn-primary w-100 mt-3">
+            Go to Tasks
+        </a>
+        <a href="{% url 'profile' %}" class="btn btn-primary w-100 mt-3">
+            Go to Profile Info
+        </a>
+    {% else %}
+        <h4 class="mb-3">Let's get started</h4>
+        <p>Please log in to manage your tasks.</p>
+        <a href="{% url 'loginView' %}" class="btn btn-success w-100 mt-3">
+            Log In
+        </a>
+    {% endif %}
+</div>
+
+{% endblock %}

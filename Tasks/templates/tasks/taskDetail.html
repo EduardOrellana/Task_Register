@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="mb-3">
+    <a href="{% url 'tasksView' %}" class="btn btn-outline-secondary">
+        ← Back to Tasks
+    </a>
+</div>
+
+<h1 class="mb-4">{{ task.title }}</h1>
+
+<div class="card shadow-sm p-4 mb-4" style="max-width: 650px;">
+    <p class="mb-2">
+        <strong>Description:</strong><br>
+        {{ task.description|default:"(No description)" }}
+    </p>
+
+    <p class="mb-2">
+        <strong>Due Date:</strong> {{ task.due_date|date:"d/m/Y" }}
+    </p>
+
+    <p class="mb-2">
+        <strong>Owner:</strong> {{ task.user.username }}
+    </p>
+
+    <p class="mb-2">
+        <strong>Important:</strong>
+        {% if task.important %}
+            <span class="text-danger fw-bold">Yes!</span>
+        {% else %}
+            No
+        {% endif %}
+    </p>
+
+    <p class="mb-3">
+        <strong>Completed:</strong>
+        {% if task.completed %}
+            <span class="text-success fw-bold">Yes!</span>
+        {% else %}
+            No
+        {% endif %}
+    </p>
+
+    <p class="mb-4">
+        <strong>Date of Completion:</strong><br>
+        {% if task.datecompleted %}
+            {{ task.datecompleted|date:"d/m/Y" }}
+        {% else %}
+            <span class="text-muted">Not completed yet</span>
+        {% endif %}
+    </p>
+
+    <a href="{% url 'editTask' task.id %}" class="btn btn-primary w-100">
+        Edit Task
+    </a>
+</div>
+
+{% endblock %}

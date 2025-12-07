@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 550px;">
+
+    <h2 class="text-center mb-4">Edit Profile</h2>
+
+    <div class="card shadow-sm p-4">
+
+        <form method="POST" onsubmit="return confirm('Are you sure you want to save changes to your profile?');">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">
+                Save Changes
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="{% url 'profile' %}" class="text-decoration-none">
+                ← Back to Profile
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
